@@ -1,6 +1,6 @@
 # AI Coding Agent
 
-A multi-agent system (built on [LangGraph](https://github.com/langchain-ai/langgraph) +
+A multi-agent system (built on [LangGraph] +
 the Mistral API) that turns a natural-language requirement into working, tested Python
 code — end to end, with no human in the loop unless the self-correction budget runs out.
 

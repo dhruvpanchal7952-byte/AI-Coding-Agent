@@ -1,7 +1,7 @@
 # AI Coding Agent
 
 A multi-agent system (built on [LangGraph](https://github.com/langchain-ai/langgraph) +
-the Anthropic API) that turns a natural-language requirement into working, tested Python
+the Mistral API) that turns a natural-language requirement into working, tested Python
 code — end to end, with no human in the loop unless the self-correction budget runs out.
 
 ## Architecture
@@ -40,25 +40,25 @@ User Requirement
 ```
 ai-coding-agent/
 ├── agents/
-│   ├── llm_client.py    # shared Anthropic API wrapper
+│   ├── llm_client.py    
 │   ├── planner.py
 │   ├── coder.py
 │   ├── reviewer.py
 │   └── tester.py
 ├── tools/
-│   ├── github_tool.py   # git init/commit/branch/push helpers
-│   ├── code_executor.py # sandboxed subprocess execution with timeout
-│   ├── file_tool.py     # workspace-scoped read/write helpers
-│   └── search_tool.py   # DuckDuckGo-backed web search
+│   ├── github_tool.py   
+│   ├── code_executor.py 
+│   ├── file_tool.py     
+│   └── search_tool.py   
 ├── prompts/
 │   ├── planner.txt
 │   ├── coder.txt
 │   ├── reviewer.txt
 │   └── tester.txt
-├── graph.py              # LangGraph StateGraph wiring + retry logic
-├── state.py               # AgentState TypedDict schema
-├── main.py                # CLI entry point
-├── app.py                 # Streamlit web UI entry point
+├── graph.py              
+├── state.py
+├── main.py                
+├── app.py                 
 ├── requirements.txt
 └── README.md
 ```
@@ -68,8 +68,8 @@ ai-coding-agent/
 ```bash
 cd ai-coding-agent
 pip install -r requirements.txt
-export ANTHROPIC_API_KEY=sk-ant-...       # required
-export AGENT_MODEL=claude-sonnet-4-5       # optional, defaults to claude-sonnet-4-5
+export MISTRAL_API_KEY=Your API KEY       # required
+export AGENT_MODEL="mistral-small-latest", "mistral-medium-latest", "mistral-large-latest"      
 ```
 
 ## Usage
@@ -80,7 +80,7 @@ export AGENT_MODEL=claude-sonnet-4-5       # optional, defaults to claude-sonnet
 streamlit run app.py
 ```
 
-Opens a browser UI where you can enter the API key (or set `ANTHROPIC_API_KEY` beforehand),
+Opens a browser UI where you can enter the API key (or set `MISTRAL_API_KEY` beforehand),
 type a requirement, watch each agent's progress live, browse the Plan/Code/Review/Tests/
 Execution Log in tabs, and download the generated files.
 
